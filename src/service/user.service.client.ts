@@ -19,11 +19,12 @@ export class UserService {
   register(user: User) {
     const requestOptions = new RequestOptions();
     requestOptions.withCredentials = true;
-
+    console.log(user);
     return this.http.post(this.baseURL + '/api/register', user)
       .pipe(map(
         (res: Response) => {
           const data = res.json();
+          console.log(data);
           return data;
         }
       ));
