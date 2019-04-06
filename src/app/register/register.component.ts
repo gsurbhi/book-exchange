@@ -11,40 +11,29 @@ import {User} from '../../model/user.model.client';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  errorFlag = false;
-  errorMsg = '';
 
   @ViewChild('f') registerForm: NgForm;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) {
+  }
 
   ngOnInit() {
   }
 
   register() {
-    var username = this.registerForm.value.username;
-    var password = this.registerForm.value.password;
-    var ver_password = this.registerForm.value.verifypassword;
-    var email = this.registerForm.value.email;
-    var firstname = this.registerForm.value.firstname;
-    var lastname = this.registerForm.value.lastname;
+    const username = this.registerForm.value.username;
+    const password = this.registerForm.value.password;
+    const verPassword = this.registerForm.value.verifypassword;
+    const email = this.registerForm.value.email;
+    const firstname = this.registerForm.value.firstname;
+    const lastname = this.registerForm.value.lastname;
 
-    if (password != ver_password) {
-      this.errorMsg = 'The passwords do not match. Please re-enter the passwords.'
-      this.errorFlag = true;
-    }
-    else{
-      var user = new User(username, password, email);
-      user.firstName = firstname;
-      user.lastName = lastname;
-      this.userService.register(user).subscribe((user: User) => {
-          this.router.navigate(['/login']);
-        },
-        (error: any) => {
-          this.errorMsg = error._body;
-          this.errorFlag = true;
-        }
-      );
-    }
+    const user = new User(username, password, email);
+    user.firstName = firstname;
+    user.lastName = lastname;
+    this.userService.register(user).subscribe((user: User) => {
+        this.router.navigate(['/login']);
+      }
+    );
   }
 }

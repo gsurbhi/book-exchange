@@ -8,12 +8,14 @@ import {FormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import {UserService} from '../service/user.service.client';
 import {HttpModule} from '@angular/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
