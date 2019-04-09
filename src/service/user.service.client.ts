@@ -43,4 +43,30 @@ export class UserService {
       ));
   }
 
+  logout() {
+    return fetch(this.baseURL +'/api/logout', {
+      method: 'post',
+      credentials: 'include'
+    });
+  }
+
+  profile() {
+    return fetch(this.baseURL +'/api/profile',
+      {
+        credentials: 'include',
+      })
+      .then(response => response.json());
+  }
+
+  updateUser(user) {
+    return fetch(this.baseURL +'/api/user', {
+      body: JSON.stringify(user),
+      credentials: 'include',
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+  }
+
 }
