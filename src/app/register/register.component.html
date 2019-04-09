@@ -2,7 +2,7 @@
 
   <h3><b>REGISTER</b></h3>
 
-  <form #f="ngForm" (ngSubmit) = register()>
+  <form #f="ngForm" (ngSubmit)=register()>
 
     <input placeholder="username"
            type="text"
@@ -57,9 +57,11 @@
            #lastname="ngModel"/>
 
     <button class="btn btn-primary btn-block regitser-elements"
-            type="submit" [disabled] = "!f.valid">Register</button>
+            type="submit" [disabled]="!f.valid">Register
+    </button>
     <button class="btn btn-danger btn-block regitser-elements"
-            [routerLink]="['/login']" >Cancel</button>
+            [routerLink]="['/login']">Cancel
+    </button>
   </form>
-
+  <div class="alert alert-danger error-message regitser-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
 </div>

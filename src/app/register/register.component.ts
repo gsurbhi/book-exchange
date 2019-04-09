@@ -11,6 +11,8 @@ import {User} from '../../model/user.model.client';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  errorFlag = false;
+  errorMessage = '';
 
   @ViewChild('f') registerForm: NgForm;
 
@@ -28,10 +30,19 @@ export class RegisterComponent implements OnInit {
     const firstName = this.registerForm.value.firstname;
     const lastName = this.registerForm.value.lastname;
 
-    const user = new User(username, password, firstName, lastName, email,  '', false);
-    this.userService.register(user).subscribe((user: User) => {
-        this.router.navigate(['/login']);
-      }
-    );
+    if (password !== verPassword) {
+      this.errorMessage = 'Passwords do not match!';
+      this.errorFlag = true;
+    } else {
+      const user = new User(username, password, firstName, lastName, email, '', false);
+      this.userService.register(user).subscribe((user: User) => {
+          this.router.navigate(['/login']);
+        },
+        (error: any) => {
+          this.errorMessage = error._body;
+          this.errorFlag = true;
+        }
+      );
+    }
   }
 }
