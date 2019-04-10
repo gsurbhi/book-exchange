@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostingService } from '../../service/post.service.client';
 import {Posting} from '../../model/posting.model.client';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,16 @@ export class DashboardComponent implements OnInit {
 
   postings: Posting[];
   flag = false;
-  constructor(private postingService: PostingService) { }
+  constructor(private postingService: PostingService,private route: ActivatedRoute) {
+    this.route.params.subscribe(
+      params => this.setParams(params));
+  }
+  username;
+
+  setParams(params) {
+    this.username = params['username'];
+
+  }
 
   ngOnInit() {
     this.postingService.getAllPostings()

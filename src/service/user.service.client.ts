@@ -43,6 +43,7 @@ export class UserService {
       ));
   }
 
+
   logout() {
     return fetch(this.baseURL +'/api/logout', {
       method: 'post',
@@ -50,8 +51,8 @@ export class UserService {
     });
   }
 
-  profile() {
-    return fetch(this.baseURL +'/api/profile',
+  profile(username) {
+    return fetch(this.baseURL +'/api/profile/'+ username,
       {
         credentials: 'include',
       })

@@ -8,8 +8,8 @@ import {ProfileComponent} from './profile/profile.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'dashboard', component: DashboardComponent}];
+  {path: 'profile/:username', component: ProfileComponent},
+  {path: 'dashboard/:username', component: DashboardComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

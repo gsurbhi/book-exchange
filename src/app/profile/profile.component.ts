@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router,ActivatedRoute} from "@angular/router";
 import {UserService} from "../../service/user.service.client";
 
 @Component({
@@ -10,8 +10,15 @@ import {UserService} from "../../service/user.service.client";
 export class ProfileComponent implements OnInit {
 
   constructor(private service: UserService,
-              private router: Router) {
+              private route: ActivatedRoute) {
     this.updateUser = this.updateUser.bind(this);
+    this.route.params.subscribe(
+      params => this.setParams(params));
+  }
+
+  setParams(params) {
+    this.username = params['username'];
+
   }
 
   user;
@@ -25,7 +32,6 @@ export class ProfileComponent implements OnInit {
 
 
   updateUser() {
-    this.user.username = this.username;
     this.user.password = this.password;
     this.user.firstName = this.firstName;
     this.user.lastName = this.lastName;
@@ -38,10 +44,10 @@ export class ProfileComponent implements OnInit {
       );
     console.log(this.user);
   }
-  
+
   ngOnInit() {
     this.service
-      .profile()
+      .profile(this.username)
       .then(user => {
           this.username = user.username;
           this.password = user.password;
@@ -50,9 +56,11 @@ export class ProfileComponent implements OnInit {
           this.emailId = user.emailId;
           this.cellNumber = user.cellNumber;
           this.isAdmin = user.isAdmin;
+          this.user = user;
 
         }
       );
+    console.log(this.user);
   }
 
 }
