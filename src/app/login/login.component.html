@@ -4,20 +4,20 @@
     <!--heading on the nav bar-->
     <p class="navbar-header">
       <a class="navbar-brand thick">
-        <b class="nav-foreground">Login</b>
+        <b class="nav-foreground">Book Exchange</b>
       </a>
     </p>
 
   </div>
 </nav>
 
-<div class="row">
+<div class="container-fluid">
   <form (ngSubmit)="login()" #form="ngForm">
     <input type="text" class="form-control login-elements" placeholder="username" name="username" ngModel required
            #username="ngModel"/>
     <input type="password" class="form-control login-elements" placeholder="password" name="password" ngModel
            required  #password="ngModel"/>
-    <button class="btn btn-primary btn-block login-elements" type="submit">Login</button>
+    <button class="btn btn-primary btn-block login-elements" type="submit" [disabled]="!form.valid">Login</button>
     <button class="btn btn-success btn-block login-elements" type="submit" [routerLink]="['/register']">Register</button>
   </form>
 </div>

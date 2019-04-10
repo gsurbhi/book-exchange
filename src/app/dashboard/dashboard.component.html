@@ -27,6 +27,26 @@
       </ul>
     </div>
   </nav>
+  <div class="container">
+    <ul class="list-group">
+      <li *ngFor="let posting of postings" class="list-group-item">
+        <div class="row">
+          <div class="col-xs-3">
+            <span>Seat Count</span>
+            <span>{{posting.book.isbn}}</span>
+          </div>
+          <div class="col-xs-3">
+            <span>Status</span>
+            <span>{{posting.date}}</span>
+          </div>
+          <div class="col-xs-3">
+            <span>Delay</span>
+            <span>{{posting.user.username}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
 </div>
 

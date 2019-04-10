@@ -10,6 +10,7 @@ import {UserService} from '../service/user.service.client';
 import {HttpModule} from '@angular/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import {PostingService} from '../service/post.service.client';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     HttpModule
   ],
-  providers: [UserService, HttpModule],
+  providers: [UserService, PostingService, HttpModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

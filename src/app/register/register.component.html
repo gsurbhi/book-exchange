@@ -1,12 +1,22 @@
-<div class="container-fluid page-margin">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
 
-  <h3><b>REGISTER</b></h3>
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">Book Exchange</b>
+      </a>
+    </p>
 
+  </div>
+</nav>
+
+<div class="container-fluid">
   <form #f="ngForm" (ngSubmit)=register()>
 
     <input placeholder="username"
            type="text"
-           class="form-control regitser-elements"
+           class="form-control register-elements"
            name="username"
            ngModel
            required
@@ -15,7 +25,7 @@
 
     <input placeholder="email"
            type="text"
-           class="form-control regitser-elements"
+           class="form-control register-elements"
            name="email"
            ngModel
            required
@@ -24,7 +34,7 @@
 
     <input placeholder="password"
            type="password"
-           class="form-control regitser-elements"
+           class="form-control register-elements"
            name="password"
            ngModel
            required
@@ -32,36 +42,36 @@
 
     <input placeholder="verify password"
            type="password"
-           class="form-control regitser-elements"
+           class="form-control register-elements"
            name="verifypassword"
            ngModel
            required
            #verifypassword="ngModel"/>
 
-    <input placeholder="firstname"
+    <input placeholder="first name"
            type="text"
-           class="form-control regitser-elements"
+           class="form-control register-elements"
            name="firstname"
            ngModel
            required
            autofocus
            #firstname="ngModel"/>
 
-    <input placeholder="lastname"
+    <input placeholder="last name"
            type="text"
-           class="form-control regitser-elements"
+           class="form-control register-elements"
            name="lastname"
            ngModel
            required
            autofocus
            #lastname="ngModel"/>
 
-    <button class="btn btn-primary btn-block regitser-elements"
+    <button class="btn btn-primary btn-block register-elements"
             type="submit" [disabled]="!f.valid">Register
     </button>
-    <button class="btn btn-danger btn-block regitser-elements"
+    <button class="btn btn-danger btn-block register-elements"
             [routerLink]="['/login']">Cancel
     </button>
   </form>
-  <div class="alert alert-danger error-message regitser-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
+  <div class="alert alert-danger error-message register-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
 </div>
