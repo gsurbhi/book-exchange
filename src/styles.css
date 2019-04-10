@@ -32,3 +32,13 @@ body {
   height: 30px;
   width: 30px;
 }
+
+.nhs-table-header {
+  color: white;
+  background-color: #428BCA;
+  text-align: center;
+}
+
+.nhs-table-content {
+  text-align: center;
+}

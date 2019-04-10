@@ -20,7 +20,7 @@
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  background-color: steelblue;
 }
 
 .sidebar .closebtn {

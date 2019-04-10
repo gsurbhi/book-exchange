@@ -60,18 +60,28 @@
 
   <div class="container">
     <ul class="list-group">
-      <li *ngFor="let posting of postings" class="list-group-item">
+      <li class="list-group-item nhs-table-header colorWhite">
         <div class="row">
-          <div class="col-xs-3">
-            <span>Seat Count</span>
-            <span>{{posting.book.isbn}}</span>
+          <div class="col-xs-4">
+            Book title
           </div>
-          <div class="col-xs-3">
-            <span>Status</span>
+          <div class="col-xs-4">
+            Date
+          </div>
+          <div class="col-xs-4">
+            By
+          </div>
+        </div>
+      </li>
+      <li *ngFor="let posting of postings" class="list-group-item nhs-table-content">
+        <div class="row">
+          <div class="col-xs-4">
+            <span>{{posting.book.title}}</span>
+          </div>
+          <div class="col-xs-4">
             <span>{{posting.date}}</span>
           </div>
-          <div class="col-xs-3">
-            <span>Delay</span>
+          <div class="col-xs-4">
             <span>{{posting.user.username}}</span>
           </div>
         </div>
