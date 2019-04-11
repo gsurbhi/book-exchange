@@ -11,6 +11,8 @@ import {HttpModule} from '@angular/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import {PostingService} from '../service/post.service.client';
+import { MyPostingNewComponent } from './myPosting/my-posting-new/my-posting-new.component';
+import { MyPostingListComponent } from './myPosting/my-posting-list/my-posting-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {PostingService} from '../service/post.service.client';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    MyPostingNewComponent,
+    MyPostingListComponent
   ],
   imports: [
     BrowserModule,

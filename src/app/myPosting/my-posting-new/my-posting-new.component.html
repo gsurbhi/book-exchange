@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">New Posting</b>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <form #f="ngForm" (ngSubmit)=createNewPosting()>
+
+    <input placeholder="title"
+           type="text"
+           class="form-control"
+           name="title"
+           ngModel
+           required
+           autofocus
+           #title="ngModel"/>
+
+    <input placeholder="author"
+           type="text"
+           class="form-control"
+           name="author"
+           ngModel
+           required
+           autofocus
+           #author="ngModel"/>
+
+    <input placeholder="isbn"
+           type="text"
+           class="form-control"
+           name="isbn"
+           ngModel
+           required
+           #isbn="ngModel"/>
+
+    <textarea placeholder="a brief description"
+              type="text"
+              class="form-control"
+              name="description"
+              rows="6"
+              ngModel
+              required
+              #description="ngModel"></textarea>
+
+    <button class="btn btn-primary btn-block register-elements"
+            type="submit" [disabled]="!f.valid">Submit
+    </button>
+    <button class="btn btn-danger btn-block register-elements"
+            [routerLink]="['/user/' + username + '/my-posting']">Cancel
+    </button>
+  </form>
+  <div class="alert alert-danger error-message register-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
+</div>
+

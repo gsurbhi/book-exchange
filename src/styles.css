@@ -42,3 +42,11 @@ body {
 .nhs-table-content {
   text-align: center;
 }
+
+.glyphicon {
+  color: white;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}

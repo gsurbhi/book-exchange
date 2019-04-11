@@ -1,32 +1,20 @@
-<div id="main">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-
 
     <!--heading on the nav bar-->
     <p class="navbar-header">
       <a class="navbar-brand thick">
-        <b class="nav-foreground">Postings</b>
-      </a>
-    </p>
-<!--    <button class="openbtn" (click)="openNav()">☰ Toggle Sidepanel</button>-->
-
-    <p class="navbar-text pull-left vertical-center">
-      <a href="javascript:;" (click)="openNav()" class="navbar-link">
-        <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
+        <b class="nav-foreground">My postings</b>
       </a>
     </p>
 
+    <div class="navbar-text pull-right">
+      <a class="nav-link"  [routerLink]="['/user/' + username + '/my-posting/new']">
+        <span class="glyphicon glyphicon-plus colorWhite"></span>
+      </a>
+    </div>
   </div>
 </nav>
-
-<div id="mySidebar" class="sidebar">
-  <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
-  <a href="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
-  <a href="#">Profile</a>
-  <a href="#">Profile</a>
-  <a href="#">Logout</a>
-</div>
 
   <div class="container">
     <ul class="list-group">
@@ -58,4 +46,3 @@
       </li>
     </ul>
   </div>
-</div>

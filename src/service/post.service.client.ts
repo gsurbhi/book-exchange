@@ -28,5 +28,26 @@ export class PostingService {
         }
       ));
   }
-
+  getPostingsById(username) {
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.get(this.baseURL + '/api/my-postings/' + username)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      ));
+  }
+  create(posting) {
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.post(this.baseURL + '/api/my-posting', posting)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      ));
+  }
 }
