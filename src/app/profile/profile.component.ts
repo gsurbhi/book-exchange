@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   emailId;
   cellNumber;
   isAdmin;
+  flag = false;
 
 
   updateUser() {
@@ -42,7 +43,6 @@ export class ProfileComponent implements OnInit {
       .then(user =>
         this.user = user
       );
-    console.log(this.user);
   }
 
   ngOnInit() {
@@ -60,7 +60,18 @@ export class ProfileComponent implements OnInit {
 
         }
       );
-    console.log(this.user);
+  }
+
+  openNav() {
+    if (!this.flag) {
+      document.getElementById('mySidebar').style.width = '250px';
+      document.getElementById('main').style.marginLeft = '250px';
+      this.flag = true;
+    } else {
+      document.getElementById('mySidebar').style.width = '0';
+      document.getElementById('main').style.marginLeft = '0';
+      this.flag = false;
+    }
   }
 
 }
