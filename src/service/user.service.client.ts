@@ -4,6 +4,7 @@ import {environment} from '../environments/environment';
 import {Router} from '@angular/router';
 import {User} from '../model/user.model.client';
 import {map} from 'rxjs/operators';
+import {isNull} from "util";
 
 
 @Injectable()
@@ -19,12 +20,10 @@ export class UserService {
   register(user: User) {
     const requestOptions = new RequestOptions();
     requestOptions.withCredentials = true;
-    console.log(user);
-    return this.http.post(this.baseURL + '/api/register', user)
+    return this.http.post(this.baseURL + '/api/register', user, requestOptions)
       .pipe(map(
         (res: Response) => {
           const data = res.json();
-          console.log(data);
           return data;
         }
       ));

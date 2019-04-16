@@ -33,7 +33,7 @@ export class MyPostingNewComponent implements OnInit {
     const description = this.registerForm.value.description;
     const book = new Book(isbn, author, title, description);
     const user = new User(this.username, '', '', '', '', '', false);
-    const posting = new Posting(undefined, undefined, user, book);
+    const posting = new Posting(undefined, new Date(), user, book);
     if ((title === undefined) || (title === '') || (title === null)) {
       this.errorFlag = true;
       return;

@@ -13,6 +13,7 @@ import {User} from '../../model/user.model.client';
 export class RegisterComponent implements OnInit {
   errorFlag = false;
   errorMessage = '';
+  error = '';
 
   @ViewChild('f') registerForm: NgForm;
 
@@ -36,10 +37,17 @@ export class RegisterComponent implements OnInit {
     } else {
       const user = new User(username, password, firstName, lastName, email, '', false);
       this.userService.register(user).subscribe((user: User) => {
+        if (user === null || user === undefined) {
+          console.log("hey");
+          console.log(user);
+          this.errorMessage = 'Username already exists';
+          this.errorFlag = true;
+        } else {
           this.router.navigate(['/login']);
+        }
         },
         (error: any) => {
-          this.errorMessage = error._body;
+          this.errorMessage = 'Username already exists!';
           this.errorFlag = true;
         }
       );

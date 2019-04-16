@@ -20,4 +20,6 @@
     <button class="btn btn-primary btn-block login-elements" type="submit" [disabled]="!form.valid">Login</button>
     <button class="btn btn-success btn-block login-elements" type="submit" [routerLink]="['/register']">Register</button>
   </form>
+  <div class="alert alert-danger error-message login-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
 </div>
+

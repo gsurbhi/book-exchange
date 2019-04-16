@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
     const user = new User(this.username, this.password, '', '', '', '', false);
     this.userService.login(user).subscribe((user: User) => {
         this.router.navigate(['user/' + this.username + '/dashboard']);
+      },
+      (error: any) => {
+        this.errorMessage = 'Username or password do not match. Please enter the correct credentials';
+        this.errorFlag = true;
       }
     );
   }
