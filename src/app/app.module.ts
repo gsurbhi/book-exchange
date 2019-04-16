@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {PostingService} from '../service/post.service.client';
 import { MyPostingNewComponent } from './myPosting/my-posting-new/my-posting-new.component';
 import { MyPostingListComponent } from './myPosting/my-posting-list/my-posting-list.component';
+import { MyPostingEditComponent } from './myPosting/my-posting-edit/my-posting-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MyPostingListComponent } from './myPosting/my-posting-list/my-posting-l
     DashboardComponent,
     ProfileComponent,
     MyPostingNewComponent,
-    MyPostingListComponent
+    MyPostingListComponent,
+    MyPostingEditComponent
   ],
   imports: [
     BrowserModule,

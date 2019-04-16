@@ -23,7 +23,6 @@ export class PostingService {
       .pipe(map(
         (res: Response) => {
           const data = res.json();
-          console.log(data);
           return data;
         }
       ));
@@ -32,6 +31,17 @@ export class PostingService {
     const requestOptions = new RequestOptions();
     requestOptions.withCredentials = true;
     return this.http.get(this.baseURL + '/api/my-postings/' + username)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      ));
+  }
+  getPostingById(pId) {
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.get(this.baseURL + '/api/my-posting/' + pId)
       .pipe(map(
         (res: Response) => {
           const data = res.json();
@@ -49,5 +59,21 @@ export class PostingService {
           return data;
         }
       ));
+  }
+  updatePosting(pId, posting) {
+    const url = this.baseURL + '/api/posting/' + pId;
+    const updatedPosting = new Posting(pId, undefined, posting.user, posting.book);
+    return this.http.put(url, updatedPosting)
+      .pipe(map((response: Response) => {
+        return response.json();
+      }
+      ));
+  }
+  deletePosting(pId) {
+    const url = this.baseURL + '/api/posting/' + pId;
+    return this.http.delete(url)
+      .pipe(map((response: Response) => {
+        return response.json();
+      }));
   }
 }

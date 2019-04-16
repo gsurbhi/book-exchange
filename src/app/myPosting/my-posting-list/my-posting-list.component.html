@@ -1,3 +1,4 @@
+<div id="main">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
@@ -13,8 +14,23 @@
         <span class="glyphicon glyphicon-plus colorWhite"></span>
       </a>
     </div>
+
+    <p class="navbar-text pull-left vertical-center">
+      <a href="javascript:;" (click)="openNav()" class="navbar-link">
+        <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
+      </a>
+    </p>
+
   </div>
 </nav>
+
+<div id="mySidebar" class="sidebar">
+  <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
+  <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+  <a href="#">Profile</a>
+  <a href="#">Profile</a>
+  <a href="#">Logout</a>
+</div>
 
   <div class="container">
     <ul class="list-group">
@@ -31,8 +47,9 @@
           </div>
         </div>
       </li>
-      <li *ngFor="let posting of postings" class="list-group-item nhs-table-content">
+      <li *ngFor="let posting of fetchPostings()" class="list-group-item nhs-table-content">
         <div class="row">
+          <a  class="nav-link"  [routerLink]="['/user/' + username + '/my-posting/' + posting.pId]">
           <div class="col-xs-4">
             <span>{{posting.book.title}}</span>
           </div>
@@ -42,7 +59,9 @@
           <div class="col-xs-4">
             <span>{{posting.user.username}}</span>
           </div>
+          </a>
         </div>
       </li>
     </ul>
   </div>
+</div>
