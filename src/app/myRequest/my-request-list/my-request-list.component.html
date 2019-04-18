@@ -1,0 +1,70 @@
+<!--<p>-->
+  <!--my-request-list works!-->
+<!--</p>-->
+
+
+<div id="main">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+      <!--heading on the nav bar-->
+      <p class="navbar-header">
+        <a class="navbar-brand thick">
+          <b class="nav-foreground">My Requests</b>
+        </a>
+      </p>
+
+      <p class="navbar-text pull-left vertical-center">
+        <a href="javascript:;" (click)="openNav()" class="navbar-link">
+          <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
+        </a>
+      </p>
+
+    </div>
+  </nav>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
+    <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
+    <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+    <a class="nav-link" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+    <a href="#">Logout</a>
+  </div>
+
+  <div class="container">
+    <ul class="list-group">
+      <li class="list-group-item nhs-table-header colorWhite">
+        <div class="row">
+          <div class="col-xs-3">
+            Requested By
+          </div>
+          <div class="col-xs-3">
+            Date
+          </div>
+          <div class="col-xs-3">
+            Posted By
+          </div>
+          <div class="col-xs-3">
+            Title of the Book
+          </div>
+        </div>
+      </li>
+      <li *ngFor="let request of fetchRequests()" class="list-group-item nhs-table-content">
+        <div class="row">
+            <div class="col-xs-3">
+              <span>{{request.username}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{request.date}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{request.posting.user.username}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{request.posting.book.title}}</span>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

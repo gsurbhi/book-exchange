@@ -14,6 +14,9 @@ import {PostingService} from '../service/post.service.client';
 import { MyPostingNewComponent } from './myPosting/my-posting-new/my-posting-new.component';
 import { MyPostingListComponent } from './myPosting/my-posting-list/my-posting-list.component';
 import { MyPostingEditComponent } from './myPosting/my-posting-edit/my-posting-edit.component';
+import { MyRequestListComponent } from './myRequest/my-request-list/my-request-list.component';
+import {RequestService} from "../service/request.service.client";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -24,15 +27,18 @@ import { MyPostingEditComponent } from './myPosting/my-posting-edit/my-posting-e
     ProfileComponent,
     MyPostingNewComponent,
     MyPostingListComponent,
-    MyPostingEditComponent
+    MyPostingEditComponent,
+    MyRequestListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    CommonModule
+
   ],
-  providers: [UserService, PostingService, HttpModule],
+  providers: [UserService, PostingService, RequestService,HttpModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export  class AppModule { }

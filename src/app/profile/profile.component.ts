@@ -10,7 +10,7 @@ import {UserService} from "../../service/user.service.client";
 export class ProfileComponent implements OnInit {
 
   constructor(private service: UserService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,private router: Router) {
     this.updateUser = this.updateUser.bind(this);
     this.route.params.subscribe(
       params => this.setParams(params));
@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
     this.service.updateUser(this.user)
       .then(user =>
         this.user = user
-      );
+      ).then(() => this.router.navigate(['/user/' + this.username + '/dashboard']));
   }
 
   ngOnInit() {
