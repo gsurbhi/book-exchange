@@ -38,8 +38,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadRequests(username) {
-    this.username = username;
-    this.requestService.findRequestsForUser(username)
+    this.requestService.findAllRequests()
       .then(requests => this.requests = requests)
       .then((requests)=>{
         requests.forEach(element => {

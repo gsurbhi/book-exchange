@@ -20,6 +20,12 @@ export class RequestService {
       .then(response => response.json());
   }
 
+  findAllRequests() {
+    return fetch(this.baseURL+'/api/requests')
+      .then(response => response.json());
+  }
+
+
   create(request) {
     const requestOptions = new RequestOptions();
     requestOptions.withCredentials = true;
@@ -30,5 +36,13 @@ export class RequestService {
           return data;
         }
       ));
+  }
+
+  deleteRequest(pId) {
+    const url = this.baseURL + '/api/request/' + pId;
+    return this.http.delete(url)
+      .pipe(map((response: Response) => {
+        return response.json();
+      }));
   }
 }

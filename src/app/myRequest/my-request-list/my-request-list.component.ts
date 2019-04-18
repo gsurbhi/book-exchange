@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Request} from '../../../model/request.model.client';
 import {RequestService} from '../../../service/request.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-request-list',
@@ -13,7 +13,8 @@ export class MyRequestListComponent implements OnInit {
   requests: Request[];
   username: string;
 
-  constructor(private route: ActivatedRoute,private requestService: RequestService) {
+  constructor(private route: ActivatedRoute,private requestService: RequestService,
+              private router: Router) {
     this.route.params.subscribe(
       params => this.setParams(params));
 
@@ -22,13 +23,19 @@ export class MyRequestListComponent implements OnInit {
   setParams(params) {
     this.username = params.username;
     this.loadRequests(this.username);
-
   }
 
   loadRequests(username) {
     this.username = username;
     this.requestService.findRequestsForUser(username)
       .then(requests => this.requests = requests);
+  }
+
+  deleteRequest(pId){
+    this.requestService.deleteRequest(pId)
+      .subscribe(() => {
+        this.router.navigate(['user', this.username, 'my-request']);
+      });
   }
 
   ngOnInit() {
