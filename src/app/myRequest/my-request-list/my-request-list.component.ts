@@ -34,18 +34,14 @@ export class MyRequestListComponent implements OnInit {
   deleteRequest(pId){
     this.requestService.deleteRequest(pId)
       .subscribe(() => {
-        this.router.navigate(['user', this.username, 'my-request']);
+        this.loadRequests(this.username);
       });
   }
 
   ngOnInit() {
   }
 
-  fetchRequests(){
-    return this.requests;
-  }
-
-
+  
   flag = false;
 
   openNav() {
