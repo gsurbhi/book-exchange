@@ -52,14 +52,13 @@ export class UserService {
       ));
   }
 
-
   logout() {
     return fetch(this.baseURL +'/api/logout', {
       method: 'post',
       credentials: 'include'
     });
   }
-  
+
   updateUser(user) {
     return fetch(this.baseURL +'/api/user', {
       body: JSON.stringify(user),

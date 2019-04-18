@@ -1,0 +1,80 @@
+<!--<p>-->
+  <!--admin-request-list works!-->
+<!--</p>-->
+
+
+<div id="main">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+      <!--heading on the nav bar-->
+      <p class="navbar-header">
+        <a class="navbar-brand thick">
+          <b class="nav-foreground">All Requests</b>
+        </a>
+      </p>
+
+
+      <p class="navbar-text pull-left vertical-center">
+        <a href="javascript:;" (click)="openNav()" class="navbar-link">
+          <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
+        </a>
+      </p>
+
+    </div>
+  </nav>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="nav-link"  [routerLink]="['/user', username, 'dashboard']">Home</a>
+    <a class="nav-link" [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
+    <a class="nav-link" [routerLink]="['/user/' + username + '/my-request']">Registered Users</a>
+    <a href="#">Logout</a>
+  </div>
+
+  <div class="container">
+    <ul class="list-group">
+      <li class="list-group-item nhs-table-header colorWhite">
+        <div class="row">
+          <div class="col-xs-3">
+            Book title
+          </div>
+          <div class="col-xs-3">
+            Requested Date
+          </div>
+          <div class="col-xs-2">
+            Requested By
+          </div>
+          <div class="col-xs-2">
+            Posted By
+          </div>
+          <div class="col-xs-2">
+            Delete
+          </div>
+        </div>
+      </li>
+      <li *ngFor="let request of requests" class="list-group-item nhs-table-content">
+        <div class="row">
+          <a  class="nav-link"  [routerLink]="['/user/' + username + '/admin-edit-request/' + request.pId]">
+            <div class="col-xs-3">
+              <span>{{request.posting.book.title}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{request.date}}</span>
+            </div>
+            <div class="col-xs-2">
+              <span>{{request.user.username}}</span>
+            </div>
+          </a>
+          <div class="col-xs-2">
+            <span>{{request.posting.user.username}}</span>
+          </div>
+          <div class="col-xs-2">
+            <button class="btn btn-primary pull-right" (click)="adminDeleteRequest(request.pId)">Delete</button>
+          </div>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

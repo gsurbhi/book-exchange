@@ -22,6 +22,7 @@ import {RequestService} from "../service/request.service.client";
 import {CommonModule} from "@angular/common";
 import { AnonymousComponent } from './anonymous/anonymous.component';
 import { AdminEditPostComponent } from './admin/admin-edit-post/admin-edit-post.component';
+import { AdminRequestListComponent } from './admin/admin-request-list/admin-request-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdminEditPostComponent } from './admin/admin-edit-post/admin-edit-post.
     WishListNewComponent,
     MyRequestListComponent,
     AnonymousComponent,
-    AdminEditPostComponent
+    AdminEditPostComponent,
+    AdminRequestListComponent
   ],
   imports: [
     BrowserModule,
