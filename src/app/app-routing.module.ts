@@ -10,9 +10,11 @@ import {MyPostingEditComponent} from './myPosting/my-posting-edit/my-posting-edi
 import {WishListComponent} from './wishList/wish-list/wish-list.component';
 import {WishListNewComponent} from './wishList/wish-list-new/wish-list-new.component';
 import {MyRequestListComponent} from "./myRequest/my-request-list/my-request-list.component";
+import {AnonymousComponent} from "./anonymous/anonymous.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'anonymous', pathMatch: 'full'},
+  {path: 'anonymous', component: AnonymousComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user/:username', component: ProfileComponent},

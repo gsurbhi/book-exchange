@@ -20,6 +20,7 @@ import {WishListService} from '../service/wishlist.service.client';
 import { MyRequestListComponent } from './myRequest/my-request-list/my-request-list.component';
 import {RequestService} from "../service/request.service.client";
 import {CommonModule} from "@angular/common";
+import { AnonymousComponent } from './anonymous/anonymous.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {CommonModule} from "@angular/common";
     MyPostingEditComponent,
     WishListComponent,
     WishListNewComponent,
-    MyRequestListComponent
+    MyRequestListComponent,
+    AnonymousComponent
   ],
   imports: [
     BrowserModule,

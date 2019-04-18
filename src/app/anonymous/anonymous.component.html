@@ -1,0 +1,63 @@
+<!--<p>-->
+  <!--anonymous works!-->
+<!--</p>-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">Book Exchange</b>
+      </a>
+    </p>
+
+    <p class="navbar-text  vertical-center">
+      <a [routerLink]="['/login']" class="navbar-link">
+        <span class="glyphicon glyphicon-align-justify">
+         <b class="nav-foreground">LOGIN</b>
+        </span>
+      </a>
+    </p>
+  </div>
+</nav>
+
+
+<div class="container">
+  <ul class="list-group">
+    <li class="list-group-item nhs-table-header colorWhite">
+      <div class="row">
+        <div class="col-xs-3">
+          ISBN
+        </div>
+        <div class="col-xs-3">
+          Book Title
+        </div>
+        <div class="col-xs-3">
+          Author
+        </div>
+        <div class="col-xs-3">
+         Description
+        </div>
+      </div>
+    </li>
+    <li *ngFor="let post of postings" class="list-group-item nhs-table-content">
+      <div class="row">
+          <div class="col-xs-3">
+            <span>{{post.book.isbn}}</span>
+          </div>
+          <div class="col-xs-3">
+            <span>{{post.book.title}}</span>
+          </div>
+          <div class="col-xs-3">
+            <span>{{post.book.author}}</span>
+          </div>
+          <div class="col-xs-3">
+            <span>{{post.book.description}}</span>
+          </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom"></nav>
