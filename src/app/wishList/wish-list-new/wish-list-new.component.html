@@ -1,0 +1,36 @@
+<div id="main">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+
+      <!--heading on the nav bar-->
+      <p class="navbar-header">
+        <a class="navbar-brand thick">
+          <b class="nav-foreground">New wish list</b>
+        </a>
+      </p>
+      <!--    <button class="openbtn" (click)="openNav()">☰ Toggle Sidepanel</button>-->
+    </div>
+  </nav>
+</div>
+
+<div class="container-fluid">
+  <form #f="ngForm" (ngSubmit)=createWishlist()>
+
+    <input placeholder="isbn"
+           type="text"
+           class="form-control"
+           name="isbn"
+           ngModel
+           required
+           #isbn="ngModel"/>
+
+    <button class="btn btn-primary btn-block register-elements"
+            type="submit" [disabled]="!f.valid">Submit
+    </button>
+    <button class="btn btn-danger btn-block register-elements"
+            [routerLink]="['/user/' + username + '/my-posting']">Cancel
+    </button>
+  </form>
+  <div class="alert alert-danger error-message register-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
+</div>

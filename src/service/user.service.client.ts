@@ -4,8 +4,6 @@ import {environment} from '../environments/environment';
 import {Router} from '@angular/router';
 import {User} from '../model/user.model.client';
 import {map} from 'rxjs/operators';
-import {isNull} from "util";
-
 
 @Injectable()
 export class UserService {

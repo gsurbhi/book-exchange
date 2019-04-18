@@ -7,6 +7,8 @@ import {ProfileComponent} from './profile/profile.component';
 import {MyPostingNewComponent} from './myPosting/my-posting-new/my-posting-new.component';
 import {MyPostingListComponent} from './myPosting/my-posting-list/my-posting-list.component';
 import {MyPostingEditComponent} from './myPosting/my-posting-edit/my-posting-edit.component';
+import {WishListComponent} from './wishList/wish-list/wish-list.component';
+import {WishListNewComponent} from './wishList/wish-list-new/wish-list-new.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: 'user/:username/dashboard', component: DashboardComponent},
   {path: 'user/:username/my-posting', component: MyPostingListComponent},
   {path: 'user/:username/my-posting/new', component: MyPostingNewComponent},
-  {path: 'user/:username/my-posting/:posting', component: MyPostingEditComponent}];
+  {path: 'user/:username/my-posting/:posting', component: MyPostingEditComponent},
+  {path: 'user/:username/wish-list', component: WishListComponent},
+  {path: 'user/:username/wish-list/new', component: WishListNewComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

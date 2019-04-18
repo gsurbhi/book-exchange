@@ -1,0 +1,71 @@
+<div id="main">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+
+      <!--heading on the nav bar-->
+      <p class="navbar-header">
+        <a class="navbar-brand thick">
+          <b class="nav-foreground">Wish list</b>
+        </a>
+      </p>
+      <!--    <button class="openbtn" (click)="openNav()">☰ Toggle Sidepanel</button>-->
+
+      <p class="navbar-text pull-left vertical-center">
+        <a href="javascript:;" (click)="openNav()" class="navbar-link">
+          <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
+        </a>
+      </p>
+
+      <div class="navbar-text pull-right">
+        <a class="nav-link"  [routerLink]="['/user/' + username + '/wish-list/new']">
+          <span class="glyphicon glyphicon-plus colorWhite"></span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
+    <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
+    <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+    <a href="#">My Requests</a>
+    <a href="nav-link" [routerLink]="['/user/' + username + '/wish-list']">WishList</a>
+    <a href="#">Logout</a>
+  </div>
+
+  <div class="container">
+    <ul class="list-group">
+      <li class="list-group-item nhs-table-header colorWhite">
+        <div class="row">
+          <div class="col-xs-4">
+            Book title
+          </div>
+          <div class="col-xs-4">
+            Date
+          </div>
+          <div class="col-xs-4">
+            By
+          </div>
+        </div>
+      </li>
+      <li *ngFor="let posting of fetchPostings()" class="list-group-item nhs-table-content">
+        <div class="row">
+          <a  class="nav-link"  [routerLink]="['/user/' + username + '/my-posting/' + posting.pId]">
+            <div class="col-xs-4">
+              <span>{{posting.book.title}}</span>
+            </div>
+            <div class="col-xs-4">
+              <span>{{posting.date}}</span>
+            </div>
+            <div class="col-xs-4">
+              <span>{{posting.user.username}}</span>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

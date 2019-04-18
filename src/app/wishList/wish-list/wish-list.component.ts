@@ -1,34 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { PostingService } from '../../service/post.service.client';
-import {Posting} from '../../model/posting.model.client';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-wish-list',
+  templateUrl: './wish-list.component.html',
+  styleUrls: ['./wish-list.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class WishListComponent implements OnInit {
 
-  postings: Posting[];
+  username: string;
   flag = false;
-  constructor(private postingService: PostingService, private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
     this.route.params.subscribe(
       params => this.setParams(params));
   }
-  username;
-
   setParams(params) {
     this.username = params['username'];
   }
-
   ngOnInit() {
-    this.postingService.getAllPostings()
-      .subscribe((postingsList) => {
-        this.postings = postingsList;
-      });
   }
-
   openNav() {
     if (!this.flag) {
       document.getElementById('mySidebar').style.width = '250px';
