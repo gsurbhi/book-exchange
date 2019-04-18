@@ -17,6 +17,9 @@ import { MyPostingEditComponent } from './myPosting/my-posting-edit/my-posting-e
 import { WishListComponent } from './wishList/wish-list/wish-list.component';
 import { WishListNewComponent } from './wishList/wish-list-new/wish-list-new.component';
 import {WishListService} from '../service/wishlist.service.client';
+import { MyRequestListComponent } from './myRequest/my-request-list/my-request-list.component';
+import {RequestService} from "../service/request.service.client";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -29,15 +32,18 @@ import {WishListService} from '../service/wishlist.service.client';
     MyPostingListComponent,
     MyPostingEditComponent,
     WishListComponent,
-    WishListNewComponent
+    WishListNewComponent,
+    MyRequestListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    CommonModule
+
   ],
-  providers: [UserService, PostingService, WishListService, HttpModule],
+  providers: [UserService, PostingService, RequestService, WishListService, HttpModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export  class AppModule { }

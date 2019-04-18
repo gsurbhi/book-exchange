@@ -9,8 +9,10 @@ import {MyPostingListComponent} from './myPosting/my-posting-list/my-posting-lis
 import {MyPostingEditComponent} from './myPosting/my-posting-edit/my-posting-edit.component';
 import {WishListComponent} from './wishList/wish-list/wish-list.component';
 import {WishListNewComponent} from './wishList/wish-list-new/wish-list-new.component';
+import {MyRequestListComponent} from "./myRequest/my-request-list/my-request-list.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user/:username', component: ProfileComponent},
@@ -19,7 +21,8 @@ const routes: Routes = [
   {path: 'user/:username/my-posting/new', component: MyPostingNewComponent},
   {path: 'user/:username/my-posting/:posting', component: MyPostingEditComponent},
   {path: 'user/:username/wish-list', component: WishListComponent},
-  {path: 'user/:username/wish-list/new', component: WishListNewComponent}];
+  {path: 'user/:username/wish-list/new', component: WishListNewComponent},
+  {path: 'user/:username/my-request', component: MyRequestListComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
