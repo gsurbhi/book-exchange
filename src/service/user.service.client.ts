@@ -40,6 +40,18 @@ export class UserService {
       ));
   }
 
+  profile(username) {
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.get(this.baseURL + '/api/profile/' + username)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      ));
+  }
+
 
   logout() {
     return fetch(this.baseURL +'/api/logout', {
@@ -47,15 +59,7 @@ export class UserService {
       credentials: 'include'
     });
   }
-
-  profile(username) {
-    return fetch(this.baseURL +'/api/profile/'+ username,
-      {
-        credentials: 'include',
-      })
-      .then(response => response.json());
-  }
-
+  
   updateUser(user) {
     return fetch(this.baseURL +'/api/user', {
       body: JSON.stringify(user),

@@ -42,13 +42,15 @@ export class ProfileComponent implements OnInit {
     this.service.updateUser(this.user)
       .then(user =>
         this.user = user
+
       ).then(() => this.router.navigate(['/user/' + this.username + '/dashboard']));
+
   }
 
   ngOnInit() {
     this.service
       .profile(this.username)
-      .then(user => {
+      .subscribe(user => {
           this.username = user.username;
           this.password = user.password;
           this.firstName = user.firstName;

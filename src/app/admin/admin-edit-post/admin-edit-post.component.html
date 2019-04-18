@@ -1,0 +1,65 @@
+<!--<p>-->
+  <!--admin-edit-post works!-->
+<!--</p>-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">Edit posting</b>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <form #f="ngForm" (ngSubmit)=adminEditPosting()>
+
+    <input placeholder="title"
+           type="text"
+           class="form-control"
+           name="title"
+           ngModel
+           required
+           autofocus
+           [(ngModel)] = "title"/>
+
+    <input placeholder="author"
+           type="text"
+           class="form-control"
+           name="author"
+           ngModel
+           required
+           autofocus
+           [(ngModel)] = "author"/>
+
+    <input placeholder="isbn"
+           type="text"
+           class="form-control"
+           name="isbn"
+           ngModel
+           required
+           [(ngModel)] = "isbn"/>
+
+    <textarea placeholder="a brief description"
+              type="text"
+              class="form-control"
+              name="description"
+              rows="6"
+              ngModel
+              required
+              [(ngModel)] = "description"></textarea>
+
+    <button class="btn btn-primary btn-block register-elements"
+            type="submit" [disabled]="!f.valid">Edit
+    </button>
+    <button type="button" class="btn btn-danger btn-block register-elements"
+            [routerLink]="['/user/' + username + '/dashboard']">Cancel
+    </button>
+  </form>
+  <div class="alert alert-danger error-message register-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
+</div>
+
+

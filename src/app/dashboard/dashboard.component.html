@@ -22,13 +22,15 @@
 
 <div id="mySidebar" class="sidebar">
   <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
-  <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
-  <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
-  <a href="nav-link" [routerLink]="['/user/' + username + '/wish-list']">WishList</a>
-  <a class="nav-link" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+
+  <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/', username]"> Profile</a>
+  <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+  <a href="nav-link"  *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/wish-list']">WishList</a>
+  <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
   <a href="#">Logout</a>
 </div>
 
+  <div *ngIf="!isAdmin">
   <div class="container">
     <ul class="list-group">
       <li class="list-group-item nhs-table-header colorWhite">
@@ -67,4 +69,63 @@
 
     </ul>
   </div>
+  </div>
+
+
+  <!--Admin Panel to be modified ----------->
+
+  <div *ngIf="isAdmin">
+    <div class="container">
+      <ul class="list-group">
+        <li class="list-group-item nhs-table-header colorWhite">
+          <div class="row">
+            <div class="col-xs-3">
+              Book title
+            </div>
+            <div class="col-xs-3">
+              Date
+            </div>
+            <div class="col-xs-2">
+              Posted By
+            </div>
+            <div class="col-xs-2">
+              Edit
+            </div>
+            <div class="col-xs-2">
+              Delete
+            </div>
+          </div>
+        </li>
+        <li *ngFor="let posting of postings" class="list-group-item nhs-table-content">
+
+          <div class="row">
+            <div class="col-xs-3">
+              <span>{{posting.book.title}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{posting.date}}</span>
+            </div>
+            <div class="col-xs-2">
+              <span>{{posting.user.username}}</span>
+            </div>
+            <div class="col-xs-2">
+
+                <a  class="nav-link"  [routerLink]="['/user/' + username + '/admin-posting/' + posting.pId]">
+                  Edit
+                </a>
+
+            </div>
+            <div class="col-xs-2">
+              <button class="btn btn-primary pull-right" (click)="adminDeletePost(posting.pId)">Delete</button>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom"></nav>

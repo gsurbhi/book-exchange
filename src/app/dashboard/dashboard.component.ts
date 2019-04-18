@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Request} from '../../model/request.model.client';
 import {RequestService} from "../../service/request.service.client";
 import {User} from "../../model/user.model.client";
+import {UserService} from "../../service/user.service.client";
 
 
 @Component({
@@ -16,15 +17,23 @@ export class DashboardComponent implements OnInit {
 
   postings: Posting[];
   username;
+  password;
   requests: Request[];
   flag = false;
   errorFlag = false;
   errorMessage: string;
   alreadyRequestPIds:number[];
+  loggedUser: User;
+  firstName;
+  lastName;
+  emailId;
+  cellNumber;
+  isAdmin: boolean;
 
 
   constructor(private postingService: PostingService, private route: ActivatedRoute,
-              private requestService: RequestService, private router: Router) {
+              private requestService: RequestService, private router: Router,
+              private userService: UserService) {
     this.route.params.subscribe(
       params => this.setParams(params));
   }
@@ -34,6 +43,8 @@ export class DashboardComponent implements OnInit {
     this.requests = [];
     this.alreadyRequestPIds= [];
     this.loadRequests(this.username);
+    this.loadProfile(this.username);
+    this.loadAllPostings();
 
   }
 
@@ -49,6 +60,24 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  loadProfile(username){
+    this.userService
+      .profile(this.username)
+      .subscribe(user => {
+          this.loggedUser = user.JSON;
+          this.isAdmin = user.admin;
+          //console.log("user in ",this.isAdmin);
+        }
+      );
+
+  }
+
+  loadAllPostings(){
+    this.postingService.getAllPostings()
+      .subscribe((postingsList) => {
+        this.postings = postingsList;
+      });
+  }
 
 requestPost(newPost){
     const user = new User(this.username, '', '', '', '', '', false);
@@ -65,10 +94,7 @@ requestPost(newPost){
 
 
   ngOnInit() {
-    this.postingService.getAllPostings()
-      .subscribe((postingsList) => {
-        this.postings = postingsList;
-      });
+
   }
 
   openNav() {
@@ -82,4 +108,17 @@ requestPost(newPost){
       this.flag = false;
     }
   }
+
+  // admin panel functions
+
+  adminDeletePost(pId){
+    this.postingService.deletePosting(pId).subscribe(() => {
+      this.loadAllPostings();
+    });
+  }
+
+
+
+
+
 }
