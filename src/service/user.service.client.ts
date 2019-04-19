@@ -21,8 +21,7 @@ export class UserService {
     return this.http.post(this.baseURL + '/api/register', user, requestOptions)
       .pipe(map(
         (res: Response) => {
-          const data = res.json();
-          return data;
+          return res.json();
         }
       ));
   }
@@ -34,8 +33,7 @@ export class UserService {
     return this.http.post(this.baseURL + '/api/login', user, requestOptions)
       .pipe(map(
         (res: Response) => {
-          const data = res.json();
-          return data;
+          return  res.json();
         }
       ));
   }
@@ -46,8 +44,7 @@ export class UserService {
     return this.http.get(this.baseURL + '/api/profile/' + username)
       .pipe(map(
         (res: Response) => {
-          const data = res.json();
-          return data;
+          return  res.json();
         }
       ));
   }
@@ -68,6 +65,27 @@ export class UserService {
         'content-type': 'application/json'
       }
     });
+  }
+
+  findAllUsers(){
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.get(this.baseURL + '/api/users')
+      .pipe(map(
+        (res: Response) => {
+         return res.json();
+        }
+      ));
+  }
+
+  deleteUser(username){
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    const url = this.baseURL + '/api/user/' + username;
+    return this.http.delete(url)
+      .pipe(map((response: Response) => {
+        return response.json();
+      }));
   }
 
 }

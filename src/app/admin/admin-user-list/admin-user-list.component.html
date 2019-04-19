@@ -1,8 +1,3 @@
-<!--<p>-->
-  <!--admin-request-list works!-->
-<!--</p>-->
-
-
 <div id="main">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -10,7 +5,7 @@
       <!--heading on the nav bar-->
       <p class="navbar-header">
         <a class="navbar-brand thick">
-          <b class="nav-foreground">All Requests</b>
+          <b class="nav-foreground">All Users</b>
         </a>
       </p>
 
@@ -35,43 +30,30 @@
     <ul class="list-group">
       <li class="list-group-item nhs-table-header colorWhite">
         <div class="row">
-          <div class="col-xs-3">
-            Book title
+          <div class="col-xs-4">
+           Username
           </div>
-          <div class="col-xs-3">
-            Requested Date
+          <div class="col-xs-4">
+            Edit
           </div>
-          <div class="col-xs-2">
-            Requested By
-          </div>
-          <div class="col-xs-2">
-            Posted By
-          </div>
-          <div class="col-xs-2">
+          <div class="col-xs-4">
             Delete
           </div>
         </div>
       </li>
-      <li *ngFor="let request of requests" class="list-group-item nhs-table-content">
+      <li *ngFor="let user of users" class="list-group-item nhs-table-content">
         <div class="row">
-          <a  class="nav-link"  [routerLink]="['/user/' + username + '/admin-edit-request/' + request.pId]">
-            <div class="col-xs-3">
-              <span>{{request.posting.book.title}}</span>
+            <div class="col-xs-4">
+              <span>{{user.username}}</span>
             </div>
-            <div class="col-xs-3">
-              <span>{{request.date}}</span>
+            <div class="col-xs-4">
+              <a  class="nav-link"  [routerLink]="['/user/' + username + '/admin-edit-user/' + user.username]">
+                edit
+              </a>
             </div>
-            <div class="col-xs-2">
-              <span>{{request.user.username}}</span>
+            <div class="col-xs-4">
+              <button class="btn btn-primary pull-right" (click)="adminDeleteUser(user.username)">Delete</button>
             </div>
-          </a>
-          <div class="col-xs-2">
-            <span>{{request.posting.user.username}}</span>
-          </div>
-          <div class="col-xs-2">
-            <button class="btn btn-primary pull-right" (click)="adminDeleteRequest(request.pId)">Delete</button>
-          </div>
-
         </div>
       </li>
     </ul>

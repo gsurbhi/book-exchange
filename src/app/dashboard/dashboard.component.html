@@ -28,7 +28,7 @@
   <a href="nav-link"  *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/wish-list']">WishList</a>
   <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
   <a class="nav-link" *ngIf="isAdmin"  [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
-  <a class="nav-link" *ngIf="isAdmin"  [routerLink]="['/user/' + username + '/my-request']">Registered Users</a>
+  <a class="nav-link" *ngIf="isAdmin"  [routerLink]="['/user/' + username + '/admin-user-list']">Registered Users</a>
   <a href="#">Logout</a>
 </div>
 
@@ -124,6 +124,8 @@
         </li>
 
       </ul>
+
+      <div class="alert alert-danger error-message register-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
     </div>
   </div>
 

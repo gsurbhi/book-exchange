@@ -23,6 +23,7 @@ import {CommonModule} from "@angular/common";
 import { AnonymousComponent } from './anonymous/anonymous.component';
 import { AdminEditPostComponent } from './admin/admin-edit-post/admin-edit-post.component';
 import { AdminRequestListComponent } from './admin/admin-request-list/admin-request-list.component';
+import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AdminRequestListComponent } from './admin/admin-request-list/admin-requ
     MyRequestListComponent,
     AnonymousComponent,
     AdminEditPostComponent,
-    AdminRequestListComponent
+    AdminRequestListComponent,
+    AdminUserListComponent
   ],
   imports: [
     BrowserModule,

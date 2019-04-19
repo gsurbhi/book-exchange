@@ -114,7 +114,11 @@ requestPost(newPost){
   adminDeletePost(pId){
     this.postingService.deletePosting(pId).subscribe(() => {
       this.loadAllPostings();
-    });
+    },
+      (error: any) => {
+        this.errorMessage = error._body;
+        this.errorFlag = true;
+      });
   }
 
 

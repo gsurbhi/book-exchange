@@ -10,9 +10,11 @@ import {Request} from "../../../model/request.model.client";
 })
 export class AdminRequestListComponent implements OnInit {
 
-  flag = false;
+
   username: string;
   requests: Request[];
+  errorFlag = false;
+  errorMessage: string;
 
   constructor(private route: ActivatedRoute,private requestService: RequestService,
               private router: Router) {
@@ -34,12 +36,16 @@ export class AdminRequestListComponent implements OnInit {
     this.requestService.deleteRequest(pId)
       .subscribe(() => {
         this.loadRequests();
-      });
+      },
+        (error: any) => {
+          this.errorMessage = error._body;
+          this.errorFlag = true;
+        });
   }
 
   ngOnInit() {
   }
-
+  flag = false;
   openNav() {
     if (!this.flag) {
       document.getElementById('mySidebar').style.width = '250px';
