@@ -62,4 +62,12 @@ export class WishListService {
         }
       ));
   }
+
+  deleteBook(wId, book) {
+    const url = this.baseURL + '/api/my-wishlist/' + wId;
+    return this.http.delete(url, book)
+      .pipe(map((response: Response) => {
+        return response.json();
+      }));
+  }
 }

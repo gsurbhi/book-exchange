@@ -41,28 +41,33 @@
     <ul class="list-group">
       <li class="list-group-item nhs-table-header colorWhite">
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-xs-3">
             Book title
           </div>
-          <div class="col-xs-4">
-            Date
+          <div class="col-xs-3">
+            Author
           </div>
-          <div class="col-xs-4">
-            By
+          <div class="col-xs-3">
+            Description
+          </div>
+          <div class="col-xs-3">
           </div>
         </div>
       </li>
       <li *ngFor="let book of books" class="list-group-item nhs-table-content">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
               <span>{{book.title}}</span>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-3">
               <span>{{book.author}}</span>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-3">
               <span>{{book.description}}</span>
             </div>
+          <div class="col-xs-3">
+            <button class="btn btn-danger" (click)="deleteBook(book)">Delete</button>
+          </div>
         </div>
       </li>
     </ul>
