@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'user/:username/my-posting', component: MyPostingListComponent},
   {path: 'user/:username/my-posting/new', component: MyPostingNewComponent},
   {path: 'user/:username/my-posting/:posting', component: MyPostingEditComponent},
-  {path: 'user/:username/wish-list', component: WishListComponent},
+  {path: 'user/:username/wish-list/:wId', component: WishListComponent},
   {path: 'user/:username/wish-list/new', component: WishListNewComponent},
   {path: 'user/:username/admin-posting/:posting', component: AdminEditPostComponent},
   {path: 'user/:username/admin-request', component: AdminRequestListComponent},

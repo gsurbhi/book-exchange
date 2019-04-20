@@ -24,7 +24,7 @@ export class WishListNewComponent implements OnInit {
   }
   createWishlist() {
     const isbn = this.registerForm.value.isbn;
-    const wishList = new WishList(undefined, isbn, new Date());
+    const wishList = new WishList(undefined, new Date());
     if ((isbn === undefined) || (isbn === '') || (isbn === null)) {
       this.errorFlag = true;
       return;

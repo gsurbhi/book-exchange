@@ -22,6 +22,43 @@ export class WishListService {
       .pipe(map(
         (res: Response) => {
           const data = res.json();
+          console.log(data);
+          return data;
+        }
+      ));
+  }
+
+  addToWishlist(book, wId) {
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.post(this.baseURL + '/api/my-wishlist/' + wId, book)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      ));
+  }
+
+  getAllBooks(wId) {
+    const requestOptions = new RequestOptions();
+    requestOptions.withCredentials = true;
+    return this.http.get(this.baseURL + '/api/books/' + wId)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      ));
+  }
+  findWishlistById(username) {
+    const requestOptions = new RequestOptions();
+    console.log(username);
+    requestOptions.withCredentials = true;
+    return this.http.get(this.baseURL + '/api/my-wishlist/' + username)
+      .pipe(map(
+        (res: Response) => {
+          const data = res.json();
           return data;
         }
       ));

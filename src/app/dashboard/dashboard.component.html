@@ -1,76 +1,86 @@
 <div id="main">
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
 
 
-    <!--heading on the nav bar-->
-    <p class="navbar-header">
-      <a class="navbar-brand thick">
-        <b class="nav-foreground">All Postings</b>
-      </a>
-    </p>
-<!--    <button class="openbtn" (click)="openNav()">☰ Toggle Sidepanel</button>-->
+      <!--heading on the nav bar-->
+      <p class="navbar-header">
+        <a class="navbar-brand thick">
+          <b class="nav-foreground">All Postings</b>
+        </a>
+      </p>
+      <!--    <button class="openbtn" (click)="openNav()">☰ Toggle Sidepanel</button>-->
 
-    <p class="navbar-text pull-left vertical-center">
-      <a href="javascript:;" (click)="openNav()" class="navbar-link">
-        <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
-      </a>
-    </p>
+      <p class="navbar-text pull-left vertical-center">
+        <a href="javascript:;" (click)="openNav()" class="navbar-link">
+          <span class="glyphicon glyphicon-menu-hamburger nav-foreground"></span>
+        </a>
+      </p>
 
+    </div>
+  </nav>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
+
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/', username]"> Profile</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+    <a href="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/wish-list/' + wId]">WishList</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-user-list']">Registered Users</a>
+    <a href="#">Logout</a>
   </div>
-</nav>
-
-<div id="mySidebar" class="sidebar">
-  <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
-
-  <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/', username]"> Profile</a>
-  <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
-  <a href="nav-link"  *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/wish-list']">WishList</a>
-  <a class="nav-link" *ngIf="!isAdmin"  [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
-  <a class="nav-link" *ngIf="isAdmin"  [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
-  <a class="nav-link" *ngIf="isAdmin"  [routerLink]="['/user/' + username + '/admin-user-list']">Registered Users</a>
-  <a href="#">Logout</a>
-</div>
 
   <div *ngIf="!isAdmin">
-  <div class="container">
-    <ul class="list-group">
-      <li class="list-group-item nhs-table-header colorWhite">
-        <div class="row">
-          <div class="col-xs-4">
-            Book title
+    <div class="container">
+      <ul class="list-group">
+        <li class="list-group-item nhs-table-header colorWhite">
+          <div class="row">
+            <div class="col-xs-4">
+              Book title
+            </div>
+            <div class="col-xs-3">
+              Date
+            </div>
+            <div class="col-xs-3">
+              Posted By
+            </div>
+            <div class="col-xs-1">
+              Status
+            </div>
+            <div class="col-xs-1">
+              Wishlist
+            </div>
           </div>
-          <div class="col-xs-3">
-            Date
-          </div>
-          <div class="col-xs-3">
-            Posted By
-          </div>
-          <div class="col-xs-2">
-            Status
-          </div>
-        </div>
-      </li>
-      <li *ngFor="let posting of postings" class="list-group-item nhs-table-content">
+        </li>
+        <li *ngFor="let posting of postings" class="list-group-item nhs-table-content">
 
-        <div class="row">
-          <div class="col-xs-4">
-            <span>{{posting.book.title}}</span>
+          <div class="row">
+            <div class="col-xs-4">
+              <span>{{posting.book.title}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{posting.date}}</span>
+            </div>
+            <div class="col-xs-3">
+              <span>{{posting.user.username}}</span>
+            </div>
+            <div class="col-xs-1">
+              <button class="btn btn-primary pull-right" *ngIf="alreadyRequestPIds.indexOf(posting.pId)==-1"
+                      (click)="requestPost(posting)">Request
+              </button>
+            </div>
+            <span class="col-xs-1">
+           <button (click)="addToWishlist(posting)">
+          <span style="color: #428BCA" class="glyphicon glyphicon-plus-sign"></span>
+        </button>
+          </span>
           </div>
-          <div class="col-xs-3">
-            <span>{{posting.date}}</span>
-          </div>
-          <div class="col-xs-3">
-            <span>{{posting.user.username}}</span>
-          </div>
-          <div class="col-xs-2">
-              <button class="btn btn-primary pull-right" *ngIf="alreadyRequestPIds.indexOf(posting.pId)==-1" (click)="requestPost(posting)">Request</button>
-          </div>
-        </div>
-    </li>
+        </li>
 
-    </ul>
-  </div>
+      </ul>
+    </div>
   </div>
 
 
@@ -112,9 +122,9 @@
             </div>
             <div class="col-xs-2">
 
-                <a  class="nav-link"  [routerLink]="['/user/' + username + '/admin-posting/' + posting.pId]">
-                  Edit
-                </a>
+              <a class="nav-link" [routerLink]="['/user/' + username + '/admin-posting/' + posting.pId]">
+                Edit
+              </a>
 
             </div>
             <div class="col-xs-2">

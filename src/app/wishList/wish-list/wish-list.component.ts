@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
+import {WishListService} from '../../../service/wishlist.service.client';
+import {Book} from '../../../model/book.model.client';
 
 @Component({
   selector: 'app-wish-list',
@@ -10,12 +12,16 @@ export class WishListComponent implements OnInit {
 
   username: string;
   flag = false;
-  constructor(private route: ActivatedRoute) {
+  books: Book[];
+  wId: number;
+  constructor(private route: ActivatedRoute, private wishlistService: WishListService) {
     this.route.params.subscribe(
       params => this.setParams(params));
   }
   setParams(params) {
-    this.username = params['username'];
+    this.username = params.username;
+    this.wId = params.wId;
+    this.fetchBooks();
   }
   ngOnInit() {
   }
@@ -29,5 +35,12 @@ export class WishListComponent implements OnInit {
       document.getElementById('main').style.marginLeft = '0';
       this.flag = false;
     }
+  }
+
+  fetchBooks() {
+    this.wishlistService.getAllBooks(this.wId)
+      .subscribe((books) => {
+        this.books = books;
+      });
   }
 }

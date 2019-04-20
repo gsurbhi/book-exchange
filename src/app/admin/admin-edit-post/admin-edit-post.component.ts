@@ -42,7 +42,7 @@ export class AdminEditPostComponent implements OnInit {
     }
 
     const book = new Book(this.isbn, this.author, this.title, this.description);
-    const user = new User(this.username, '', '', '', '', '', false);
+    const user = new User(this.username, '', '', '', '', '', false, undefined);
     const posting = new Posting(this.pId, undefined, user, book);
     this.postingService.updatePosting(this.pId, posting)
       .subscribe((posting) => {

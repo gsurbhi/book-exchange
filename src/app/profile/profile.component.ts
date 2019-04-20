@@ -10,14 +10,14 @@ import {UserService} from "../../service/user.service.client";
 export class ProfileComponent implements OnInit {
 
   constructor(private service: UserService,
-              private route: ActivatedRoute,private router: Router) {
+              private route: ActivatedRoute, private router: Router) {
     this.updateUser = this.updateUser.bind(this);
     this.route.params.subscribe(
       params => this.setParams(params));
   }
 
   setParams(params) {
-    this.username = params['username'];
+    this.username = params.username;
 
   }
 

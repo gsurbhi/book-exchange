@@ -50,19 +50,17 @@
           </div>
         </div>
       </li>
-      <li *ngFor="let posting of fetchPostings()" class="list-group-item nhs-table-content">
+      <li *ngFor="let book of books" class="list-group-item nhs-table-content">
         <div class="row">
-          <a  class="nav-link"  [routerLink]="['/user/' + username + '/my-posting/' + posting.pId]">
             <div class="col-xs-4">
-              <span>{{posting.book.title}}</span>
+              <span>{{book.title}}</span>
             </div>
             <div class="col-xs-4">
-              <span>{{posting.date}}</span>
+              <span>{{book.author}}</span>
             </div>
             <div class="col-xs-4">
-              <span>{{posting.user.username}}</span>
+              <span>{{book.description}}</span>
             </div>
-          </a>
         </div>
       </li>
     </ul>
