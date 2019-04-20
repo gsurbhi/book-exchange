@@ -1,0 +1,76 @@
+<!--<p>-->
+  <!--admin-edit-user works!-->
+<!--</p>-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">Edit User details</b>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <form #f="ngForm" (ngSubmit)=editUser()>
+
+    <input placeholder="username"
+           type="text"
+           class="form-control"
+           name="username"
+           ngModel
+           required
+           autofocus
+           [(ngModel)] = "userNameUpdate"/>
+
+    <input placeholder="password"
+           type="text"
+           class="form-control"
+           name="password"
+           ngModel
+           required
+           autofocus
+           [(ngModel)] = "password"/>
+
+    <input placeholder="FirstName"
+           type="text"
+           class="form-control"
+           name="firstName"
+           ngModel
+           required
+           [(ngModel)] = "firstName"/>
+    <input placeholder="LastName"
+           type="text"
+           class="form-control"
+           name="lastName"
+           ngModel
+           required
+           [(ngModel)] = "lastName"/>
+    <input placeholder="CellNumber"
+           type="text"
+           class="form-control"
+           name="lastName"
+           ngModel
+           required
+           [(ngModel)] = "cellNumber"/>
+    <input placeholder="EmailId"
+           type="text"
+           class="form-control"
+           name="lastName"
+           ngModel
+           required
+           [(ngModel)] = "emailId"/>
+
+
+    <button class="btn btn-primary btn-block register-elements"
+            type="submit" [disabled]="!f.valid">Edit
+    </button>
+    <button type="button" class="btn btn-danger btn-block register-elements"
+            [routerLink]="['/user/' + username + '/admin-user-list']">Cancel
+    </button>
+  </form>
+  <div class="alert alert-danger error-message register-elements" *ngIf="errorFlag"> {{errorMessage}} </div>
+</div>
