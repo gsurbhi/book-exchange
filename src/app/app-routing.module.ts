@@ -14,6 +14,7 @@ import {AnonymousComponent} from "./anonymous/anonymous.component";
 import {AdminEditPostComponent} from "./admin/admin-edit-post/admin-edit-post.component";
 import {AdminRequestListComponent} from "./admin/admin-request-list/admin-request-list.component";
 import {AdminUserListComponent} from "./admin/admin-user-list/admin-user-list.component";
+import {AdminEditUserComponent} from "./admin/admin-edit-user/admin-edit-user.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'anonymous', pathMatch: 'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'user/:username/admin-posting/:posting', component: AdminEditPostComponent},
   {path: 'user/:username/admin-request', component: AdminRequestListComponent},
   {path: 'user/:username/admin-user-list', component: AdminUserListComponent},
+  {path: 'user/:username/admin-edit-user/:userName', component: AdminEditUserComponent},
   {path: 'user/:username/my-request', component: MyRequestListComponent}];
 
 @NgModule({

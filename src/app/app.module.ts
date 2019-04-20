@@ -24,6 +24,7 @@ import { AnonymousComponent } from './anonymous/anonymous.component';
 import { AdminEditPostComponent } from './admin/admin-edit-post/admin-edit-post.component';
 import { AdminRequestListComponent } from './admin/admin-request-list/admin-request-list.component';
 import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
+import { AdminEditUserComponent } from './admin/admin-edit-user/admin-edit-user.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.
     AnonymousComponent,
     AdminEditPostComponent,
     AdminRequestListComponent,
-    AdminUserListComponent
+    AdminUserListComponent,
+    AdminEditUserComponent
   ],
   imports: [
     BrowserModule,
