@@ -56,6 +56,7 @@ export class WishListComponent implements OnInit {
   }
 
   deleteBook(book) {
+    console.log(book);
     this.wishlistService.deleteBook(this.wId, book)
       .subscribe(() => {
         this.fetchBooks();
