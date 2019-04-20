@@ -28,10 +28,12 @@
 
   <div id="mySidebar" class="sidebar">
     <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
-    <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
-    <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
-    <a href="#">My Requests</a>
-    <a href="nav-link" [routerLink]="['/user/' + username + '/wish-list']">WishList</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+    <a href="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/wish-list/' + wId]">Wish list</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/', username]"> Profile</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-user-list']">Registered Users</a>
     <a href="#">Logout</a>
   </div>
 

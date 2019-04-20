@@ -6,8 +6,9 @@ import {Request} from '../../model/request.model.client';
 import {RequestService} from '../../service/request.service.client';
 import {User} from '../../model/user.model.client';
 import {UserService} from '../../service/user.service.client';
-import {WishListService} from "../../service/wishlist.service.client";
-import {WishList} from "../../model/wishlist.model.client";
+import {WishListService} from '../../service/wishlist.service.client';
+import {WishList} from '../../model/wishlist.model.client';
+import {Book} from "../../model/book.model.client";
 
 
 @Component({
@@ -32,6 +33,7 @@ export class DashboardComponent implements OnInit {
   cellNumber;
   isAdmin: boolean;
   wId: number;
+  books: number[];
 
 
   constructor(private postingService: PostingService, private route: ActivatedRoute,
@@ -45,20 +47,25 @@ export class DashboardComponent implements OnInit {
     this.username = params['username'];
     this.requests = [];
     this.alreadyRequestPIds = [];
-    this.loadRequests(this.username);
+    this.books = [];
+    this.loadRequests();
     this.loadProfile(this.username);
     this.loadAllPostings();
-
   }
 
-  loadRequests(username) {
+  // fetchBooks() {
+  //   this.wishlistService.getAllBooks(this.wId)
+  //     .subscribe((books) => {
+  //       this.books = books;
+  //     });
+  // }
+  loadRequests() {
     this.requestService.findAllRequests()
       .then(requests => this.requests = requests)
       .then((requests) => {
         requests.forEach(element => {
           this.alreadyRequestPIds.push(
             element.pId);
-          console.log(this.alreadyRequestPIds);
         });
       });
   }
@@ -102,7 +109,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.wishlistService.findWishlistById(this.username).subscribe((wishlist: WishList) => {
       this.wId = wishlist.wId;
+      this.wishlistService.getAllBooks(this.wId)
+        .subscribe((books) => {
+          books.forEach(element => {
+            this.books.push(
+              element.isbn);
+        });
     });
+  });
   }
 
   openNav() {

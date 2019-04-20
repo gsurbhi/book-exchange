@@ -53,7 +53,6 @@ export class WishListService {
   }
   findWishlistById(username) {
     const requestOptions = new RequestOptions();
-    console.log(username);
     requestOptions.withCredentials = true;
     return this.http.get(this.baseURL + '/api/my-wishlist/' + username)
       .pipe(map(

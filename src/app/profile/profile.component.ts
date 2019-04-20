@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router,ActivatedRoute} from "@angular/router";
-import {UserService} from "../../service/user.service.client";
+import {Router, ActivatedRoute} from '@angular/router';
+import {UserService} from '../../service/user.service.client';
+import {WishList} from '../../model/wishlist.model.client';
+import {WishListService} from '../../service/wishlist.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -8,19 +10,7 @@ import {UserService} from "../../service/user.service.client";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private service: UserService,
-              private route: ActivatedRoute, private router: Router) {
-    this.updateUser = this.updateUser.bind(this);
-    this.route.params.subscribe(
-      params => this.setParams(params));
-  }
-
-  setParams(params) {
-    this.username = params.username;
-
-  }
-
+  wId: number;
   user;
   username;
   password;
@@ -30,8 +20,17 @@ export class ProfileComponent implements OnInit {
   cellNumber;
   isAdmin;
   flag = false;
+  constructor(private service: UserService,
+              private route: ActivatedRoute, private router: Router, private wishlistService: WishListService) {
+    this.updateUser = this.updateUser.bind(this);
+    this.route.params.subscribe(
+      params => this.setParams(params));
+  }
 
+  setParams(params) {
+    this.username = params.username;
 
+  }
   updateUser() {
     this.user.password = this.password;
     this.user.firstName = this.firstName;
@@ -62,6 +61,9 @@ export class ProfileComponent implements OnInit {
 
         }
       );
+    this.wishlistService.findWishlistById(this.username).subscribe((wishlist: WishList) => {
+      this.wId = wishlist.wId;
+    });
   }
 
   openNav() {

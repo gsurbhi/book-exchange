@@ -16,15 +16,18 @@ export class RequestService {
   }
 
   findRequestsForUser(username) {
-    return fetch(this.baseURL+'/api/my-requests/' + username)
-      .then(response => response.json());
+    return fetch(this.baseURL + '/api/my-requests/' + username)
+      .then((response) => {
+        const data = response.json();
+        console.log(data);
+        return data;
+      });
   }
 
   findAllRequests() {
-    return fetch(this.baseURL+'/api/requests')
+    return fetch(this.baseURL + '/api/requests')
       .then(response => response.json());
   }
-
 
   create(request) {
     const requestOptions = new RequestOptions();

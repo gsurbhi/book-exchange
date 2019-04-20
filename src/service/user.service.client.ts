@@ -52,7 +52,7 @@ export class UserService {
   }
 
   logout() {
-    return fetch(this.baseURL +'/api/logout', {
+    return fetch(this.baseURL + '/api/logout', {
       method: 'post',
       credentials: 'include'
     });
@@ -69,7 +69,7 @@ export class UserService {
     });
   }
 
-  findAllUsers(){
+  findAllUsers() {
     const requestOptions = new RequestOptions();
     requestOptions.withCredentials = true;
     return this.http.get(this.baseURL + '/api/users')
@@ -80,7 +80,7 @@ export class UserService {
       ));
   }
 
-  deleteUser(username){
+  deleteUser(username) {
     const requestOptions = new RequestOptions();
     requestOptions.withCredentials = true;
     const url = this.baseURL + '/api/user/' + username;

@@ -25,9 +25,12 @@
 
   <div id="mySidebar" class="sidebar">
     <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
-    <a class="nav-link"  [routerLink]="['/user/', username]"> Profile</a>
-    <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
-    <a class="nav-link" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+    <a href="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/wish-list/' + wId]">Wish list</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/', username]"> Profile</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-user-list']">Registered Users</a>
     <a href="#">Logout</a>
   </div>
 
@@ -35,40 +38,33 @@
     <ul class="list-group">
       <li class="list-group-item nhs-table-header colorWhite">
         <div class="row">
-          <div class="col-xs-2">
-            Requested By
-          </div>
           <div class="col-xs-3">
             Title of the Book
           </div>
           <div class="col-xs-3">
             Date
           </div>
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             Posted By
           </div>
-
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             Delete
           </div>
         </div>
       </li>
       <li *ngFor="let request of requests" class="list-group-item nhs-table-content">
         <div class="row">
-            <div class="col-xs-2">
-              <span>{{request.username}}</span>
-            </div>
           <div class="col-xs-3">
             <span>{{request.posting.book.title}}</span>
           </div>
             <div class="col-xs-3">
-              <span>{{request.date}}</span>
+              <span>{{request.date | date:'MM-dd-yyyy'}}</span>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-3">
               <span>{{request.posting.user.username}}</span>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-3">
               <button class="btn btn-primary pull-right" (click)="deleteRequest(request.pId)">Delete</button>
             </div>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {WishListService} from '../../../service/wishlist.service.client';
 import {Book} from '../../../model/book.model.client';
+import {UserService} from "../../../service/user.service.client";
 
 @Component({
   selector: 'app-wish-list',
@@ -14,7 +15,8 @@ export class WishListComponent implements OnInit {
   flag = false;
   books: Book[];
   wId: number;
-  constructor(private route: ActivatedRoute, private wishlistService: WishListService) {
+  isAdmin: boolean;
+  constructor(private route: ActivatedRoute, private wishlistService: WishListService, private userService: UserService) {
     this.route.params.subscribe(
       params => this.setParams(params));
   }
@@ -24,6 +26,15 @@ export class WishListComponent implements OnInit {
     this.fetchBooks();
   }
   ngOnInit() {
+    this.loadProfile(this.username);
+  }
+  loadProfile(username) {
+    this.userService.profile(this.username)
+      .subscribe(user => {
+          this.isAdmin = user.admin;
+        }
+      );
+
   }
   openNav() {
     if (!this.flag) {

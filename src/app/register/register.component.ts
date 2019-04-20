@@ -3,8 +3,8 @@ import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service.client';
 import {User} from '../../model/user.model.client';
-import {WishList} from "../../model/wishlist.model.client";
-import {WishListService} from "../../service/wishlist.service.client";
+import {WishList} from '../../model/wishlist.model.client';
+import {WishListService} from '../../service/wishlist.service.client';
 
 
 @Component({

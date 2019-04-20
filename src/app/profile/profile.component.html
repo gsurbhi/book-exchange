@@ -20,16 +20,19 @@
   </nav>
 
   <div id="mySidebar" class="sidebar">
-    <a class="nav-link" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
-    <a class="nav-link" [routerLink]="['/user/' + username + '/dashboard']">Dashboard</a>
-    <a href="#">Profile</a>
-    <a href="#">Profile</a>
-    <a class="nav-link" [routerLink]="['/login']">Logout</a>
+    <a href="nav-link" [routerLink]="['/user', username, 'dashboard']">Home</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-posting']">My Postings</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/my-request']">My Requests</a>
+    <a href="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/' + username + '/wish-list/' + wId]">Wish list</a>
+    <a class="nav-link" *ngIf="!isAdmin" [routerLink]="['/user/', username]"> Profile</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-request']">All Requests</a>
+    <a class="nav-link" *ngIf="isAdmin" [routerLink]="['/user/' + username + '/admin-user-list']">Registered Users</a>
+    <a href="#">Logout</a>
   </div>
-</div>
 
-  <div class="container">
-  <h2>Welcome {{username}}</h2>
+
+  <div class="container-fluid">
+  <h3>Welcome {{username}}!</h3>
 
   <input [(ngModel)]="password"
          placeholder="Password"
@@ -53,8 +56,8 @@
     Update
   </button>
   <button class="btn btn-danger btn-block register-elements"
-          [routerLink]="['/login']">Cancel
+          [routerLink]="['/user/'+ username + '/dashboard']">Cancel
   </button>
 
   </div>
-
+</div>
