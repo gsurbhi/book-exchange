@@ -71,8 +71,8 @@
               </button>
             </div>
             <span class="col-xs-2">
-           <button (click)="addToWishlist(posting)" *ngIf="books.indexOf(posting.book.isbn)==-1">
-          <span style="color: #428BCA" class="glyphicon glyphicon-plus-sign"></span>
+           <button class="btn" style="background-color: #428BCA" (click)="addToWishlist(posting)" *ngIf="books.indexOf(posting.book.isbn)==-1">
+          <span style="color: white" class="glyphicon glyphicon-plus-sign"></span>
         </button>
           </span>
           </div>

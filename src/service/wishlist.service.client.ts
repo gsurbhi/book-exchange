@@ -22,7 +22,6 @@ export class WishListService {
       .pipe(map(
         (res: Response) => {
           const data = res.json();
-          console.log(data);
           return data;
         }
       ));
@@ -65,7 +64,6 @@ export class WishListService {
 
   deleteBook(wId, book) {
     const url = this.baseURL + '/api/my-wishlist/' + wId + '/' + book.isbn;
-    console.log(url);
     return this.http.delete(url)
       .pipe(map((response: Response) => {
         return response.json();

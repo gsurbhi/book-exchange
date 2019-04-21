@@ -19,7 +19,6 @@ export class RequestService {
     return fetch(this.baseURL + '/api/my-requests/' + username)
       .then((response) => {
         const data = response.json();
-        console.log(data);
         return data;
       });
   }
